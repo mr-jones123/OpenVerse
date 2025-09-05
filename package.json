@@ -8,7 +8,11 @@
     "start": "next start",
     "db:push": "prisma db push && prisma generate",
     "db:studio": "prisma studio",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

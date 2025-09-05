@@ -12,7 +12,7 @@ export async function getAllResources(): Promise<Aral[]>{
     console.log(resources)
     return resources
   } catch (error) {
-    console.log("Retrieved Resources: Failed")
+    console.error("Failed: ", error)
     throw new Error('Failed to fetch sources')
   }
 }

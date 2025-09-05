@@ -7,6 +7,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -26,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -45,8 +47,14 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     state: {
       columnFilters,
+    },
+    initialState: {
+      pagination: {
+        pageSize: 10,
+      },
     },
   })
 
@@ -54,7 +62,7 @@ export function DataTable<TData, TValue>({
     <div className="w-full">
       <div className="flex items-center py-4 gap-4">
         <Select value={selectedColumn} onValueChange={setSelectedColumn}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-[180px] border-green-200 focus:ring-green-500">
             <SelectValue placeholder="Select column" />
           </SelectTrigger>
           <SelectContent>
@@ -69,7 +77,7 @@ export function DataTable<TData, TValue>({
           onChange={(event) =>
             table.getColumn(selectedColumn)?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm border-green-200 focus:ring-green-500 focus:border-green-500"
         />
       </div>
       <div className="overflow-hidden rounded-md border">
@@ -115,6 +123,32 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
         </Table>
+      </div>
+      <div className="flex items-center justify-between space-x-2 py-4">
+        <div className="text-sm text-muted-foreground">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()} ({table.getFilteredRowModel().rows.length} total rows)
+        </div>
+        <div className="flex items-center space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            className="border-green-200 text-green-700 hover:bg-green-50 hover:text-green-800"
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            className="border-green-200 text-green-700 hover:bg-green-50 hover:text-green-800"
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   )
