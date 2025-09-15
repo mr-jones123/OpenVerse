@@ -2,9 +2,9 @@
   "name": "open-verse",
   "version": "0.1.0",
   "private": true,
- "scripts": {
+  "scripts": {
     "dev": "next dev --turbopack",
-    "build": "prisma generate && next build --turbopack", 
+    "build": "prisma generate && next build --turbopack",
     "start": "next start",
     "db:push": "prisma db push && prisma generate",
     "db:studio": "prisma studio",
@@ -44,6 +44,8 @@
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.4",
     "@tanstack/react-table": "^8.21.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
