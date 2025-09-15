@@ -5,7 +5,6 @@ import { columns } from "@/components/aral-table/columns";
 async function getData(){
   try {
     const aralData = await getAllResources()
-    console.log(aralData)
     return aralData
   } catch (error) {
     console.error('Error fetching data:', error)
