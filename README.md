@@ -73,5 +73,6 @@ The best advantage of OpenVerse is that it is built on the modern, industry-base
 ## Aral
 Aral is a centralized platform where you can get the best resources to advance your college career. Personally, I used a lot of these and helped me to become an AI Engineer. I want you to do the same (but 100x better than me😉).
 
+<img width="1889" height="868" alt="image" src="https://github.com/user-attachments/assets/e5a19d36-d641-4bf1-b18b-0dc15f479935" />
 
 
